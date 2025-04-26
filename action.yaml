@@ -15,6 +15,10 @@ outputs:
 runs:
   using: 'composite'
   steps:
+    - id: echo
+      run: ${{ tojson(inputs) }}
+      shell: cat {0}
+
     - run: echo "message='Hello ${{ inputs.name }}'" >> "$GITHUB_OUTPUT"
       shell: bash
       id: hello
